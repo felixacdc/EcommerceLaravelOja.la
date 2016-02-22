@@ -1,0 +1,26 @@
+========= Composer ============
+++ Actualizar las tablas creadas
+comando: composer update
+
+========= Descargar laravel ========
+descarga por medio de composer:
+composer create-project laravel/laravel {Nombre} vercion(5.1) --prefer-dist
+
+========= Migraciones Y Seeders =============
+++ Crear una plantilla de migracion
+comando: php artisan migrate:install
+
+++ Crear plantilla de migracion para una tabla
+comando: php artisan migrate:make create_user
+
+++ Ejecutar las migraciones:
+comando: php artisan migrate
+
+++ Deshace las migraciones:
+comando: php artisan migrate:rollback
+
+++ Para re ejecutar tus migraciones:
+Comando: php artisan migrate:refresh
+
+++ Correr un Seeder
+Comando: php artisan db:seed --class=<NombreClaseDelSeeder>
