@@ -2,11 +2,11 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script>
-	@@if (Session::has('error'))
+	@if (Session::has('error'))
 		alert("{{Session::get('error')}}");
 	@endif
 
-	@@if (Session::has('mensaje'))
+	@if (Session::has('mensaje'))
 		alert("{{Session::get('mensaje')}}");
 	@endif
 </script>
