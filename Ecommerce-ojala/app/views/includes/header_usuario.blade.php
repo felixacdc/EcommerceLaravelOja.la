@@ -22,8 +22,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Bienvenido {{Auth::user()->nombre}}<b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{URL::to('usuario/ordenes')}}"></a>Mis Ordenes</li>
-                        <li><a href="{{URL::to('usuario/logout')}}"></a>Cerrar Session</li>
+                        <li><a href="{{URL::to('usuario/ordenes')}}">Mis Ordenes</a></li>
+                        <li><a href="{{URL::to('usuario/logout')}}">Cerrar Session</a></li>
                     </ul>
                 </li>
             </ul>

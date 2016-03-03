@@ -21,12 +21,12 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Bienvenido {{Auth::user()->nombre}}<b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{URL::to('admin/orden/index')}}"></a>Gestion Ordenes</li>
-                        <li><a href="{{URL::to('admin/orden/index')}}"></a>Gestion Usuarios</li>
-                        <li><a href="{{URL::to('admin/orden/index')}}"></a>Gestion Autores</li>
-                        <li><a href="{{URL::to('admin/orden/index')}}"></a>Gestion Categorias</li>
-                        <li><a href="{{URL::to('admin/orden/index')}}"></a>Gestion Libros</li>
-                        <li><a href="{{URL::to('usuario/logout')}}"></a>Cerrar Sesion</li>
+                        <li><a href="{{URL::to('admin/orden/index')}}">Gestion Ordenes</a></li>
+                        <li><a href="{{URL::to('admin/orden/index')}}">Gestion Usuarios</a></li>
+                        <li><a href="{{URL::to('admin/orden/index')}}">Gestion Autores</a></li>
+                        <li><a href="{{URL::to('admin/orden/index')}}">Gestion Categorias</a></li>
+                        <li><a href="{{URL::to('admin/orden/index')}}">Gestion Libros</a></li>
+                        <li><a href="{{URL::to('usuario/logout')}}">Cerrar Sesion</a></li>
                     </ul>
                 </li>
             </ul>

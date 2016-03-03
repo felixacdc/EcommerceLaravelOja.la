@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('indexnuevo');
-});
+Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
+Route::post('/usuario/login', ['uses' => 'UsuariosController@postLogin']);
+Route::get('/usuario/logout', 'UsuariosController@getLogout');
 
 
-Route::resource('usuarios', 'UsuariosController');
+/*Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('categorias', 'CategoriasController');
 

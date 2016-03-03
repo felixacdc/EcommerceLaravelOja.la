@@ -76,4 +76,27 @@ class UsuariosController extends BaseController {
 		//
 	}
 
+	public function postLogin ()
+	{
+		$email = Input::get('email');
+		$password = Input::get('password');
+
+		if (Auth::attempt(['email' => $email, 'password' => $password])) {
+			if (Auth::user()->admin == 0) {
+				return Redirect::route('index');
+			} else {
+				return Redirect::to('admin/index');
+			}
+			
+		} else {
+			return Redirect::route('index')->with('error', 'Por favor revise su email o password');
+		}	
+	}
+
+	public function getLogout ()
+	{
+		Auth::logout();
+		return Redirect::route('index');
+	}
+
 }
