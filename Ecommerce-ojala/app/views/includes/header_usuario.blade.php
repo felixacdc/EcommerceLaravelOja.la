@@ -14,8 +14,8 @@
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{{URL::to('/')}}" class="navbar-brand"></a>Inicio</li>
-                <li><a href="{{URL::to('carros')}}" class="navbar-brand"></a>Tu Carrito</li>
+                <li><a href="{{URL::to('/')}}" class="navbar-brand">Inicio</a></li>
+                <li><a href="{{URL::to('carros')}}" class="navbar-brand">Tu Carrito</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

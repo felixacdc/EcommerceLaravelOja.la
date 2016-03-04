@@ -14,8 +14,21 @@
 Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 Route::post('/usuario/login', ['uses' => 'UsuariosController@postLogin']);
 Route::get('/usuario/logout', 'UsuariosController@getLogout');
+Route::post('/carro/añadir',
+	[
+		'before' => 'auth.basic',
+		'uses' 	 => 'CarrosController@postAñadirAlCarro'
+	]
+);
 
+Route::get('/carros',
+	[
+		'before' => 'auth.basic',
+		'as' 	 => 'carro',
+		'uses'	 => 'CarrosController@index'
+	]
 
+);
 /*Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('categorias', 'CategoriasController');

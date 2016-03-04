@@ -9,7 +9,16 @@ class CarrosController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('carros.index');
+		$miembro_id = Auth::user()->id;
+
+		$carro_libros = Carro::with('Libros')
+						->where('miembro_id', '=', $miembro_id)->get();
+		$carro_total = Carro::with('Libros')
+						->where('miembro_id', '=', $miembro_id)->sum('total');
+
+        return View::make('Carros.index')
+        			->with('carro_libros', $carro_libros)
+        			->with('carro_total', $carro_total);
 	}
 
 	/**
@@ -74,6 +83,45 @@ class CarrosController extends BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function postAñadirAlCarro ()
+	{
+		$rules = [
+
+			'cantidad'  => 'required|numeric',
+			'libro'		=> 'required|numeric|exists:libros,id' //si existe el id en la tabla de libros
+
+		];
+
+		$validacion = Validator::make(Input::all(), $rules);
+
+		if ( $validacion->fails() ) {
+			return Redirect::route('index')->with('error', 'El libro no se pudo añadir a tu carrito');
+		} 
+
+		// Auth es la clase de autenticacion de laravel
+		$miembro_id = Auth::user()->id;
+		$libro_id 	= Input::get('libro');
+		$cantidad	= Input::get('cantidad');
+
+		$libro = Libro::find($libro_id);
+		$total = $cantidad * $libro->precio;
+
+		$count = Carro::where('libro_id', '=', $libro_id)->where('miembro_id', '=', $miembro_id)->count();
+
+		if ($count) {
+			return Redirect::route('index')->with('error', 'El libro ya existe en tu carrito');
+		}
+		
+		Carro::create([
+			'miembro_id' => $miembro_id,
+			'libro_id'	 => $libro_id,
+			'cantidad'	 => $cantidad,
+			'total'		 => $total
+		]);
+
+		return Redirect::route('carro');
 	}
 
 }
