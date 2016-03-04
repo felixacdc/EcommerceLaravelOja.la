@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 
 	public function index ()
 	{
-		return View::make('indexnuevo');
+		$libro = Libro::with('Autor')->where('publicado','=','1')->paginate(3);
+		return View::make('indexnuevo')->with('libros', $libro);
 	}
 
 }
