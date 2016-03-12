@@ -19,6 +19,9 @@
 					<td>{{$carro_item->cantidad}}</td>
 					<td>{{$carro_item->Libros->precio}}</td>
 					<td>{{$carro_item->Libros->total}}</td>
+					<td>
+						<a href="{{URL::route('eliminar_libro_desde_carro',[$carro_item->id])}}" class="btn btn-danger">Eliminar</a>
+					</td>
 				</tr>
 			@endforeach
 

@@ -124,4 +124,12 @@ class CarrosController extends BaseController {
 		return Redirect::route('carro');
 	}
 
+	public function getEliminar ($id)
+	{
+		$carro = Carro::find($id);
+		$carro->delete();
+
+		return Redirect::route('carro');
+	}
+
 }

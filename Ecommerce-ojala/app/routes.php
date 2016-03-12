@@ -29,6 +29,14 @@ Route::get('/carros',
 	]
 
 );
+
+Route::get('carros/eliminar/{id}',
+	[
+		'before' => 'auth.basic',
+		'as' 	 => 'eliminar_libro_desde_carro',
+		'uses'	 => 'CarrosController@getEliminar'
+	]
+);
 /*Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('categorias', 'CategoriasController');
