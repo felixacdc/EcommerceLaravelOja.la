@@ -18,7 +18,7 @@
 					<td>{{$carro_item->Libros->titulo}}</td>
 					<td>{{$carro_item->cantidad}}</td>
 					<td>{{$carro_item->Libros->precio}}</td>
-					<td>{{$carro_item->Libros->total}}</td>
+					<td>{{$carro_item->total}}</td>
 					<td>
 						<a href="{{URL::route('eliminar_libro_desde_carro',[$carro_item->id])}}" class="btn btn-danger">Eliminar</a>
 					</td>
@@ -35,7 +35,7 @@
 		</table>
 		
 		<h1>Enviando</h1>
-		{{Form::open(array('url' => '/open'))}}
+		{{Form::open(array('url' => '/orden'))}}
 
 			<div class="form-group">
 				<label for="">Direccion</label>

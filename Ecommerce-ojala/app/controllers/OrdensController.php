@@ -76,4 +76,38 @@ class OrdensController extends BaseController {
 		//
 	}
 
+	public function postOrden ()
+	{
+		$miembro_id = Auth::user()->id;
+		$direccion 	= Input::get('direccion');
+
+		$carro_libros = Carro::with('Libros')->where('miembro_id', '=', $miembro_id)->get();
+		$carro_total = Carro::with('Libros')->where('miembro_id', '=', $miembro_id)->sum('total');
+
+		$estado = "Pronto envio";
+
+		$orden = Orden::create([
+			'miembro_id' => $miembro_id,
+			'direccion'	 => $direccion,
+			'total'		 => $carro_total,
+			'estado'	 => $estado
+		]);
+
+		
+
+		foreach ($carro_libros as $carro_libro) {
+			$orden->ordenItems()->attach($carro_libro->libro_id, 
+				[
+					'cantidad' => $carro_libro->cantidad,
+					'precio'   => $carro_libro->libros->precio,
+					'total'    => $carro_libro->libros->precio * $carro_libro->cantidad,
+					'created_at' => new DateTime
+				]);
+		}
+
+		Carro::where('miembro_id', '=', $miembro_id)->delete();
+
+		return Redirect::route('index')->with('mensaje', 'Tu orden ha sido procesada...');
+	}
+
 }

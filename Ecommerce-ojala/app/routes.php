@@ -37,6 +37,13 @@ Route::get('carros/eliminar/{id}',
 		'uses'	 => 'CarrosController@getEliminar'
 	]
 );
+
+Route::post('orden',
+	[
+		'before' => 'auth.basic',
+		'uses'	 => 'OrdensController@postOrden'
+	]
+);
 /*Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('categorias', 'CategoriasController');
