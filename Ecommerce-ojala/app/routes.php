@@ -44,6 +44,13 @@ Route::post('orden',
 		'uses'	 => 'OrdensController@postOrden'
 	]
 );
+
+Route::get('usuario/ordenes',
+	[
+		'before' => 'auth.basic',
+		'uses'	 => 'OrdensController@index'
+	]
+);
 /*Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('categorias', 'CategoriasController');

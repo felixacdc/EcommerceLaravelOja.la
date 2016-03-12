@@ -9,7 +9,11 @@ class OrdensController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('ordens.index');
+		$miembro_id = Auth::user()->id;
+
+		$ordenes = Orden::with('ordenItems')->where('miembro_id', '=', $miembro_id)->get();
+
+        return View::make('Ordens.index')->with('ordenes', $ordenes);
 	}
 
 	/**
