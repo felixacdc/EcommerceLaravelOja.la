@@ -44,7 +44,8 @@ class OrdensController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('ordens.show');
+		$ordenes = Orden::with('ordenItems')->where('id', '=', $id)->get();
+        return View::make('Ordens.show')->with('ordenes', $ordenes);
 	}
 
 	/**
@@ -55,7 +56,12 @@ class OrdensController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('ordens.edit');
+		$ordenes = DB::table('usuarios')
+			->join('ordens', 'usuarios.id', '=', 'ordens.miembro_id')
+			->where('ordens.id', '=', $id)
+			->get();
+
+        return View::make('Ordens.edit')->with('ordenes', $ordenes);
 	}
 
 	/**
@@ -66,7 +72,19 @@ class OrdensController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$reglas = array('estado' => 'min:4|max:50');
+
+		$validar = Validator::make(Input::all(), $reglas);
+
+		if ($validar->fails()) {
+			return Redirect::to('admin/orden/editar', $id)->withError($validar);
+		} else {
+			$orden = Orden::find($id);
+			$orden->estado = Input::get('estado');
+			$orden->save();
+
+			return Redirect::to('admin/orden/index')->with('mensaje', 'Usuario Actualizado Exitosamente');
+		}
 	}
 
 	/**
@@ -77,7 +95,11 @@ class OrdensController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$orden = Orden::find($id);
+		DB::table('ordenlibros')->where('orden_id', '=', $id)->delete();
+		$orden->delete();
+
+		return Redirect::to('admin/orden/index')->with('mensaje', 'La orden ha sido eliminada correctamente');
 	}
 
 	public function postOrden ()
