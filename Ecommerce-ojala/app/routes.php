@@ -51,6 +51,23 @@ Route::get('usuario/ordenes',
 		'uses'	 => 'OrdensController@index'
 	]
 );
+
+Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), function () {
+		Route::get('index',
+			[
+				'before' => 'auth.basic',
+				'uses'	 => 'AdminController@index'
+			]
+		);
+
+		# Gestion de ordenes
+		Route::get('orden/index', 'AdminController@ordenes');
+		Route::get('orden/{id}', 'OrdensController@show');
+		Route::get('orden/editar/{id}', 'OrdensController@edit');
+		Route::get('orden/eliminar/{id}', 'OrdensController@destroy');
+		Route::post('orden/{id}', 'OrdensController@update');
+	}
+);
 /*Route::resource('usuarios', 'UsuariosController');
 
 Route::resource('categorias', 'CategoriasController');
@@ -63,4 +80,4 @@ Route::resource('carros', 'CarrosController');
 
 Route::resource('ordens', 'OrdensController');
 
-Route::resource('ordenlibros', 'OrdenlibrosController');
+Route::resource('ordenlibros', 'OrdenlibrosController');*/

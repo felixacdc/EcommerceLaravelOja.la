@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	@include('includes.head')
+	@include('includes.headadmin')
 </head>
 <body>
 
@@ -19,6 +19,6 @@
 
 	</div>
 	
-	@include('includes.script')
+	@include('includes.scriptadmin')
 </body>
 </html>

@@ -27,8 +27,20 @@ class UsuariosTableSeeder extends Seeder {
 
 		
 
-		Usuario::create(
+		// Usuario::create(
+		// 	[
+		// 		'email'		=> 'admin@admin.com',
+		// 		'password'	=> Hash::make('1234'),
+		// 		'nombre'	=> 'admin',
+		// 		'apellido'	=> 'admin',
+		// 		'admin'		=> 1,
+		// 		'created_at'=> new DateTime
+		// 	]
+		// );
+
+		$usuarios = array(
 			[
+
 				'email'		=> 'admin@admin.com',
 				'password'	=> Hash::make('1234'),
 				'nombre'	=> 'admin',
@@ -37,6 +49,8 @@ class UsuariosTableSeeder extends Seeder {
 				'created_at'=> new DateTime
 			]
 		);
+
+		DB::table('usuarios')->insert($usuarios);
 	}
 
 }
