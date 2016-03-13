@@ -22,7 +22,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{URL::to('admin/orden/index')}}">Gestion Ordenes</a></li>
                         <li><a href="{{URL::to('admin/orden/index')}}">Gestion Usuarios</a></li>
-                        <li><a href="{{URL::to('admin/orden/index')}}">Gestion Autores</a></li>
+                        <li><a href="{{URL::to('admin/autor/index')}}">Gestion Autores</a></li>
                         <li><a href="{{URL::to('admin/orden/index')}}">Gestion Categorias</a></li>
                         <li><a href="{{URL::to('admin/orden/index')}}">Gestion Libros</a></li>
                         <li><a href="{{URL::to('usuario/logout')}}">Cerrar Sesion</a></li>

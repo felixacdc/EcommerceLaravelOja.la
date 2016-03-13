@@ -66,6 +66,15 @@ Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), 
 		Route::get('orden/editar/{id}', 'OrdensController@edit');
 		Route::get('orden/eliminar/{id}', 'OrdensController@destroy');
 		Route::post('orden/{id}', 'OrdensController@update');
+
+		# Gestion de autores
+		Route::get('autor/crear', 'AutoresController@create');
+		Route::post('autor/crear', 'AutoresController@store');
+
+		Route::get('autor/index', 'AutoresController@index');
+		Route::get('autor/editar/{id}', 'AutoresController@edit');
+		Route::post('autor/{id}', 'AutoresController@update');
+		Route::get('autor/eliminar/{id}', 'AutoresController@destroy');
 	}
 );
 /*Route::resource('usuarios', 'UsuariosController');

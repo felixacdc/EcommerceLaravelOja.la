@@ -9,7 +9,8 @@ class AutoresController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('autores.index');
+		$autores = Autore::all();
+        return View::make('Autores.index')->with('autores', $autores);
 	}
 
 	/**
@@ -19,7 +20,7 @@ class AutoresController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('autores.create');
+        return View::make('Autores.create');
 	}
 
 	/**
@@ -29,7 +30,26 @@ class AutoresController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		$reglas = array(
+			'nacionalidad' => 'required|min:2|max:200',
+			'apellido'	   => 'required|min:2|max:200',
+			'nombre'	   => 'required|min:2|max:200'
+		);
+
+		$validar = Validator::make(Input::all(), $reglas);
+
+		if ($validar->fails()) {
+			return Redirect::to('admin/autor/crear')->withErrors($validar);
+		} else {
+			$autor = new Autore;
+			$autor->nombre = Input::get('nombre');
+			$autor->apellido = Input::get('apellido');
+			$autor->nacionalidad = Input::get('nacionalidad');
+			$autor->save();
+
+			return Redirect::to('admin/autor/index')->with('mensaje', 'Autor creado exitosamente');
+		}
+		
 	}
 
 	/**
@@ -40,7 +60,7 @@ class AutoresController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('autores.show');
+        return View::make('Autores.show');
 	}
 
 	/**
@@ -51,7 +71,8 @@ class AutoresController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('autores.edit');
+		$autores = Autore::find($id);
+        return View::make('Autores.edit')->with('autores', $autores);
 	}
 
 	/**
@@ -62,7 +83,25 @@ class AutoresController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$reglas = array(
+			'nacionalidad' => 'required|min:2|max:200',
+			'apellido'	   => 'required|min:2|max:200',
+			'nombre'	   => 'required|min:2|max:200'
+		);
+
+		$validar = Validator::make(Input::all(), $reglas);
+
+		if ($validar->fails()) {
+			return Redirect::to('admin/autor/crear')->withErrors($validar);
+		} else {
+			$autor = Autore::find($id);
+			$autor->nombre = Input::get('nombre');
+			$autor->apellido = Input::get('apellido');
+			$autor->nacionalidad = Input::get('nacionalidad');
+			$autor->save();
+
+			return Redirect::to('admin/autor/index')->with('mensaje', 'Autor acutalizado exitosamente');
+		}
 	}
 
 	/**
@@ -73,7 +112,10 @@ class AutoresController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$autores = Autore::find($id);
+		$autores->delete();
+
+		return Redirect::to('admin/autor/index')->with('mensaje', 'Autor Eliminado Correctamente');
 	}
 
 }
