@@ -73,7 +73,7 @@ class LibrosController extends BaseController {
 				'titulo' => Input::get('titulo');
 				'isbn' => Input::get('isbn');
 				'precio' => Input::get('precio');
-				'cubierta' => date('Y-m-d-H:i:s') . '-' . Input::get('photo')->getClientOriginalName();
+				'cubierta' => date('Y-m-d-H:i:s') . '-' . Input::file('photo')->getClientOriginalName();
 				'publicado' => Input::get('publicado');
 				'descripcion' => Input::get('descripcion');
 				'autor_id' => Input::get('autor_id');
