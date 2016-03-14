@@ -9,4 +9,9 @@ class Libro extends Eloquent {
 	{
 		return $this->belongsTo('Autore');
 	}
+
+	public function Categoria()
+	{
+		return $this->belongsTo('Categoria');
+	}
 }

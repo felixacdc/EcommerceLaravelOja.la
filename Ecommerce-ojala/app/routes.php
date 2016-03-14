@@ -84,6 +84,16 @@ Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), 
 		Route::get('categoria/editar/{id}', 'CategoriasController@edit');
 		Route::post('cateogria/{id}', 'CategoriasController@update');
 		Route::get('categoria/eliminar/{id}', 'CategoriasController@destroy');
+
+		# Gestion de libros
+		Route::get('libro/crear', 'LibrosController@create');
+		Route::post('libro/crear', 'LibrosController@store');
+
+		Route::get('libro/index', 'LibrosController@index');
+		Route::get('libro/{id}', 'LibrosController@show');
+		Route::get('libro/editar/{id}', 'LibrosController@edit');
+		Route::post('libro/{id}', 'LibrosController@update');
+		Route::get('libro/eliminar/{id}', 'LibrosController@destroy');
 	}
 );
 /*Route::resource('usuarios', 'UsuariosController');
