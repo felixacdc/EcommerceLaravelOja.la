@@ -45,7 +45,7 @@ class CategoriasController extends BaseController {
 			$categorias->tipo = Input::get('tipo');
 			$categorias->save();
 
-			return Redirect::to('admin/categoria/index')->with('mensaje', 'Categoria creada correctamente')
+			return Redirect::to('admin/categoria/index')->with('mensaje', 'Categoria creada correctamente');
 		}
 		
 	}
@@ -96,7 +96,7 @@ class CategoriasController extends BaseController {
 			$categorias->tipo = Input::get('tipo');
 			$categorias->save();
 
-			return Redirect::to('admin/categoria/index')->with('mensaje', 'Categoria actualizada correctamente')
+			return Redirect::to('admin/categoria/index')->with('mensaje', 'Categoria actualizada correctamente');
 		}
 	}
 

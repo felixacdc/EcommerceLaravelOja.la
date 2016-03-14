@@ -82,7 +82,7 @@ Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), 
 
 		Route::get('categoria/index', 'CategoriasController@index');
 		Route::get('categoria/editar/{id}', 'CategoriasController@edit');
-		Route::get('cateogria/{id}', 'CategoriasController@update');
+		Route::post('cateogria/{id}', 'CategoriasController@update');
 		Route::get('categoria/eliminar/{id}', 'CategoriasController@destroy');
 	}
 );
