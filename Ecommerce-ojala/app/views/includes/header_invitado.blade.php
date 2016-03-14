@@ -14,8 +14,8 @@
         
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{{URL::to('/')}}" class="navbar-brand"></a>Inicio</li>
-                <li><a href="{{URL::to('usuarios/create')}}" class="navbar-brand"></a>Crear Usuario</li>
+                <li><a href="{{URL::to('/')}}" class="navbar-brand">Inicio</a></li>
+                <li><a href="{{URL::to('usuarios/create')}}" class="navbar-brand">Crear Usuario</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

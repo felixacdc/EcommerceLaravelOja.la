@@ -75,6 +75,15 @@ Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), 
 		Route::get('autor/editar/{id}', 'AutoresController@edit');
 		Route::post('autor/{id}', 'AutoresController@update');
 		Route::get('autor/eliminar/{id}', 'AutoresController@destroy');
+
+		# Gestion de categorias
+		Route::get('categoria/crear', 'CategoriasController@create');
+		Route::post('categoria/crear', 'CategoriasController@store');
+
+		Route::get('categoria/index', 'CategoriasController@index');
+		Route::get('categoria/editar/{id}', 'CategoriasController@edit');
+		Route::get('cateogria/{id}', 'CategoriasController@update');
+		Route::get('categoria/eliminar/{id}', 'CategoriasController@destroy');
 	}
 );
 /*Route::resource('usuarios', 'UsuariosController');
