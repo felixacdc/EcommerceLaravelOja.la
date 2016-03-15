@@ -117,7 +117,7 @@ class LibrosController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$libros = Libro::find($id);
+		$libro = Libro::find($id);
 
 		$categorias = array();
 
