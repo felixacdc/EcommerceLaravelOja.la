@@ -70,14 +70,14 @@ class LibrosController extends BaseController {
 			return Redirect::to('admin/libro/crear')->withErrors($validation)->ithInput();
 		} else {
 			$libro = new Libro(array(
-				'titulo' => Input::get('titulo');
-				'isbn' => Input::get('isbn');
-				'precio' => Input::get('precio');
-				'cubierta' => date('Y-m-d-H:i:s') . '-' . Input::file('photo')->getClientOriginalName();
-				'publicado' => Input::get('publicado');
-				'descripcion' => Input::get('descripcion');
-				'autor_id' => Input::get('autor_id');
-				'categoria_id' => Input::get('categoria_id');
+				'titulo' => Input::get('titulo'),
+				'isbn' => Input::get('isbn'),
+				'precio' => Input::get('precio'),
+				'cubierta' => date('Y-m-d-H:i:s') . '-' . Input::file('photo')->getClientOriginalName(),
+				'publicado' => Input::get('publicado'),
+				'descripcion' => Input::get('descripcion'),
+				'autor_id' => Input::get('autor_id'),
+				'categoria_id' => Input::get('categoria_id')
 			));
 
 			$filename = time() . "." . $imagen->getClientOriginalName();
@@ -106,7 +106,7 @@ class LibrosController extends BaseController {
 			->select('libros.titulo', 'libros.isbn', 'libros.precio', 'libros.cubierta', 'libros.publicado', 'libros.rating_cache', 'libros.descripcion', 'autores.nombre', 'autores.apellido', 'categorias.tipo')
 			->get();
 
-        return View::make('libros.show')->with('libros', $libros);
+        return View::make('Libros.show')->with('libros', $libros);
 	}
 
 	/**
