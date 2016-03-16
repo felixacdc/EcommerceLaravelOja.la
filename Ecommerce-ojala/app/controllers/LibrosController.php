@@ -188,7 +188,7 @@ class LibrosController extends BaseController {
 	public function destroy($id)
 	{
 		$libro = Libro::find($id);
-		$path = public_path() . 'imagenes/';
+		$path = public_path() . '/imagenes/';
 		\File::delete($path . $libro->cubierta);
 
 		$libro->delete();

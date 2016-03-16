@@ -20,7 +20,7 @@
 	@foreach($libros as $valor)
 		<tr>
 			<td>{{$valor->id}}</td>
-			<td>{{$valor->titulo}} {{HTML::image('imagenes/' . $valor->cubierta, $valor->titulo, array('width' => '100'))}}</td>
+			<td>{{$valor->titulo}} {{HTML::image('imagenes/'.$valor->cubierta,$valor->titulo,array('width'=>'100'))}}</td>
 			<td>{{$valor->isbn}}</td>
 			<td>{{$valor->precio}}</td>
 			
