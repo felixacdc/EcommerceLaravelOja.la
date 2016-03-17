@@ -104,7 +104,7 @@ class UsuariosController extends BaseController {
 			'nombre'			=> 'required|min:5|max:70',
 			'apellido'			=> 'required|min:5|max:70',
 			'admin'				=> 'required|boolean',
-			'contrasena'		=> 'required|min:5|max:30',
+			'contrasena'		=> 'min:5|max:30',
 			'contrasena_repite' => 'same:contrasena'
 		);
 
@@ -126,7 +126,7 @@ class UsuariosController extends BaseController {
 					array(
 						'nombre'	 => Input::get('nombre'),
 						'apellido'	 => Input::get('apellido'),
-						'password'	 => Input::get('contrasena'),
+						'password'	 => $contraseña,
 						'admin'		 => Input::get('admin')
 					)
 				);
