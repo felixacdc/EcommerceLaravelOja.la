@@ -52,6 +52,10 @@ Route::get('usuario/ordenes',
 	]
 );
 
+// Crear usuarios
+Route::get('usuarios/create', 'UsuariosController@create'); // Vista
+Route::post('usuarios/create', 'UsuariosController@store'); // Almacenar
+
 Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), function () {
 		Route::get('index',
 			[
@@ -94,6 +98,14 @@ Route::group(array('prefix' => 'admin', 'before' => array('auth.basic|admin')), 
 		Route::get('libro/editar/{id}', 'LibrosController@edit');
 		Route::post('libro/{id}', 'LibrosController@update');
 		Route::get('libro/eliminar/{id}', 'LibrosController@destroy');
+
+		# Gestion de usuarios
+		Route::get('usuario/index', 'UsuariosController@index');
+		Route::get('usuario/{id}', 'UsuariosController@show');
+		Route::get('usuario/editar/{id}', 'UsuariosController@edit');
+		Route::post('usuario/{id}', 'UsuariosController@update');
+		Route::get('usuario/eliminar/{id}', 'UsuariosController@destroy');
+
 	}
 );
 /*Route::resource('usuarios', 'UsuariosController');
