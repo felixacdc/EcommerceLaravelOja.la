@@ -53,7 +53,7 @@ class UsuariosController extends BaseController {
 					'nombre'	 => Input::get('nombre'),
 					'apellido'	 => Input::get('apellido'),
 					'email'		 => Input::get('email'),
-					'password'	 => Input::get('contrasena'),
+					'password'	 => Hash::make(Input::get('contrasena')),
 					'admin'		 => 0,
 					'created_at' => new DateTime
 				]
