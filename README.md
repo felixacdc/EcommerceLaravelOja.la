@@ -9,4 +9,6 @@
 > Manejo de rutas <br />
 > Seeders <br />
 > Fluent Query Builder <br />
-> Faker <br />
+> Faker <br /> <br>
+- 
+- [x] Curso Finalizado
